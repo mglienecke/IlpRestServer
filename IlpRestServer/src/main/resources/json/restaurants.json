@@ -1,0 +1,64 @@
+[
+  {
+    "name": "Civerinos Slice",
+    "longitude": -3.1912869215011597,
+    "latitude": 55.945535152517735,
+    "menu": [
+      {
+        "name": "Margarita",
+        "priceInPence": 1000
+      },
+      {
+        "name": "Calzone",
+        "priceInPence": 1400
+      }
+    ]
+  },
+  {
+    "name": "Sora Lella Vegan Restaurant",
+    "longitude": -3.202541470527649,
+    "latitude": 55.943284737579376,
+    "menu": [
+      {
+        "name": "Meat Lover",
+        "priceInPence": 1400
+      },
+      {
+        "name": "Vegan Delight",
+        "priceInPence": 1100
+      }
+    ]
+  }
+,
+  {
+    "name": "Domino's Pizza - Edinburgh - Southside",
+    "longitude": -3.1838572025299072,
+    "latitude":  55.94449876875712,
+    "menu": [
+      {
+        "name": "Super Cheese",
+        "priceInPence": 1400
+      },
+      {
+        "name": "All Shrooms",
+        "priceInPence": 900
+      }
+    ]
+  }
+,
+  {
+    "name": "Sodeberg Pavillion",
+    "longitude":  -3.1940174102783203,
+    "latitude": 55.94390696616939,
+    "menu": [
+      {
+        "name": "Proper Pizza",
+        "priceInPence": 1400
+      },
+      {
+        "name": "Pineapple & Ham & Cheese",
+        "priceInPence": 900
+      }
+    ]
+  }
+]
