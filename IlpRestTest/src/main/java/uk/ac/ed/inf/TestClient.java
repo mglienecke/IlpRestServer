@@ -1,6 +1,7 @@
 package uk.ac.ed.inf;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import uk.ac.ed.inf.ilpData.TestItem;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -35,19 +36,19 @@ public class TestClient
              * the Jackson JSON library provides helper methods which can directly
              * take a URL, perform the GET request convert the result to the specified class
              */
-            TestResponse response = new ObjectMapper().readValue(
-                    new URL(baseUrl + "test/" + echoBasis), TestResponse.class);
+            TestItem response = new ObjectMapper().readValue(
+                    new URL(baseUrl + "test/" + echoBasis), TestItem.class);
 
             /**
              * some error checking - only needed for the sample (if the JSON data is
              * not correct usually an exception is thrown)
              */
-            if (! response.greeting.endsWith(echoBasis)){
+            if (! response.greeting().endsWith(echoBasis)){
                 throw new RuntimeException("wrong echo returned");
             }
 
             System.out.println("The server responded as JSON-greeting: \n\n"
-                    + response.greeting);
+                    + response.greeting());
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
