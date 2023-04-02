@@ -6,12 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="IlpDataObjects" />
         <module name="PizzaDronz" />
+        <module name="IlpRestTest" />
+        <module name="IlpDataObjects" />
+        <module name="IlpRestServer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="IlpDataObjects" target="18" />
+      <module name="IlpRestServer" target="18" />
+      <module name="IlpRestTest" target="18" />
       <module name="PizzaDronz" target="18" />
     </bytecodeTargetLevel>
   </component>

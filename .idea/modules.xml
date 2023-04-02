@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Ilp.iml" filepath="$PROJECT_DIR$/.idea/Ilp.iml" />
       <module fileurl="file://$PROJECT_DIR$/IlpDataObjects/IlpDataObjects.iml" filepath="$PROJECT_DIR$/IlpDataObjects/IlpDataObjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IlpRestServer/IlpRestServer.iml" filepath="$PROJECT_DIR$/IlpRestServer/IlpRestServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IlpRestTest/IlpRestTest.iml" filepath="$PROJECT_DIR$/IlpRestTest/IlpRestTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/PizzaDronz/PizzaDronz.iml" filepath="$PROJECT_DIR$/PizzaDronz/PizzaDronz.iml" />
     </modules>
   </component>

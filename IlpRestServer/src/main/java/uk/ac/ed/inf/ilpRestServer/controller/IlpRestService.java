@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import uk.ac.ed.inf.ilpData.*;
+import uk.ac.ed.inf.ilp.data.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

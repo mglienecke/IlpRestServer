@@ -5,6 +5,8 @@
       <list>
         <option value="$PROJECT_DIR$/PizzaDronz/pom.xml" />
         <option value="$PROJECT_DIR$/IlpDataObjects/pom.xml" />
+        <option value="$PROJECT_DIR$/IlpRestServer/pom.xml" />
+        <option value="$PROJECT_DIR$/IlpRestTest/pom.xml" />
       </list>
     </option>
   </component>

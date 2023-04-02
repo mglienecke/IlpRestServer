@@ -1,11 +1,12 @@
 package uk.ac.ed.inf;
 
-import uk.ac.ed.inf.ilpData.TestItem;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import uk.ac.ed.inf.ilp.data.*;
+
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 
 /**
  * A very simple client to GET JSON data from a remote server
