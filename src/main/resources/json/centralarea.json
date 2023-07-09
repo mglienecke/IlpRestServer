@@ -1,0 +1,25 @@
+{
+  "name": "central",
+  "vertices": [
+    {
+      "name": "Forrest Hill",
+      "lng": -3.192473,
+      "lat": 55.946233
+    },
+    {
+      "name": "Top of the Meadows",
+      "lng": -3.192473,
+      "lat": 55.942617
+    },
+    {
+      "name": "Buccleuch St bus stop",
+      "lng": -3.184319,
+      "lat": 55.942617
+    },
+    {
+      "name": "KFC",
+      "lng": -3.184319,
+      "lat": 55.946233
+    }
+  ]
+}

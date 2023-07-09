@@ -1,8 +1,17 @@
 [
   {
     "name": "Civerinos Slice",
-    "longitude": -3.1912869215011597,
-    "latitude": 55.945535152517735,
+    "location": {
+      "lng": -3.1912869215011597,
+      "lat": 55.945535152517735
+    },
+    "openingDays": [
+      "MONDAY",
+      "TUESDAY",
+      "FRIDAY",
+      "SATURDAY",
+      "SUNDAY"
+    ],
     "menu": [
       {
         "name": "Margarita",
@@ -16,8 +25,17 @@
   },
   {
     "name": "Sora Lella Vegan Restaurant",
-    "longitude": -3.202541470527649,
-    "latitude": 55.943284737579376,
+    "location": {
+      "lng": -3.202541470527649,
+      "lat": 55.943284737579376
+    },
+    "openingDays": [
+      "MONDAY",
+      "TUESDAY",
+      "WEDNESDAY",
+      "THURSDAY",
+      "FRIDAY"
+    ],
     "menu": [
       {
         "name": "Meat Lover",
@@ -28,12 +46,20 @@
         "priceInPence": 1100
       }
     ]
-  }
-,
+  },
   {
     "name": "Domino's Pizza - Edinburgh - Southside",
-    "longitude": -3.1838572025299072,
-    "latitude":  55.94449876875712,
+    "location": {
+      "lng": -3.1838572025299072,
+      "lat": 55.94449876875712
+    },
+    "openingDays": [
+      "WEDNESDAY",
+      "THURSDAY",
+      "FRIDAY",
+      "SATURDAY",
+      "SUNDAY"
+    ],
     "menu": [
       {
         "name": "Super Cheese",
@@ -44,12 +70,19 @@
         "priceInPence": 900
       }
     ]
-  }
-,
+  },
   {
     "name": "Sodeberg Pavillion",
-    "longitude":  -3.1940174102783203,
-    "latitude": 55.94390696616939,
+    "location": {
+      "lng": -3.1940174102783203,
+      "lat": 55.94390696616939
+    },
+    "openingDays": [
+      "TUESDAY",
+      "WEDNESDAY",
+      "SATURDAY",
+      "SUNDAY"
+    ],
     "menu": [
       {
         "name": "Proper Pizza",
