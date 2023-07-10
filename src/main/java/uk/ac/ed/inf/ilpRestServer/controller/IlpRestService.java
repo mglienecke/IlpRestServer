@@ -1,14 +1,19 @@
 package uk.ac.ed.inf.ilpRestServer.controller;
 
 import com.google.gson.Gson;
-import org.springframework.cglib.core.Local;
+import com.google.gson.GsonBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import uk.ac.ed.inf.ilp.constant.OrderStatus;
-import uk.ac.ed.inf.ilp.data.*;
+import uk.ac.ed.inf.ilp.data.NamedRegion;
+import uk.ac.ed.inf.ilp.data.Order;
+import uk.ac.ed.inf.ilp.data.Restaurant;
+import uk.ac.ed.inf.ilp.data.TestItem;
+import uk.ac.ed.inf.ilp.gsonUtils.LocalDateDeserializer;
+import uk.ac.ed.inf.ilp.gsonUtils.LocalDateSerializer;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -28,7 +33,11 @@ public class IlpRestService {
      * @return an array of orders from the file
      */
     private Order[] getOrders(){
-        return new Gson().fromJson(new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("json/orders.json")))), Order[].class);
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+        return gson.fromJson(new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("json/orders.json")))), Order[].class);
     }
 
     /**
@@ -65,7 +74,8 @@ public class IlpRestService {
 
         var orders = getOrders();
         if (orderDate != null){
-            result = new ArrayList<>(Arrays.stream(orders).filter(o -> o.getOrderDate().equals(orderDate)).toList());
+            var compDate = LocalDate.parse(orderDate);
+            result = new ArrayList<>(Arrays.stream(orders).filter(o -> o.getOrderDate().equals(compDate)).toList());
         } else {
             result = new ArrayList<>(List.of(orders));
         }

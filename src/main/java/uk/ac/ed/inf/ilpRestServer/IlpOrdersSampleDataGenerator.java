@@ -26,6 +26,21 @@ import static net.andreinc.mockneat.types.enums.CreditCardType.*;
  */
 public class IlpOrdersSampleDataGenerator {
 
+    /**
+     * how many valid orders to generate per day
+     */
+    public static final int MAX_VALID_ORDERS_PER_DAY = 50;
+
+    /**
+     * the start date for our generation
+     */
+    public static final LocalDate START_DATE = LocalDate.of(2023, 9, 1);
+
+    /**
+     * how many months to generate
+     */
+    public static final int DURATION_IN_MONTHS = 5;
+
     private static int restaurantIndex = 0;
 
     public static Order CreateSampleOrder(LocalDate currentDate, OrderStatus orderStatus, InvalidOrderReasonCode reasonCodeForFailure, MockNeat mock, Restaurant[] restaurants){
@@ -62,9 +77,12 @@ public class IlpOrdersSampleDataGenerator {
         // needed for the Pizzas and prices
         var restaurants = new IlpRestService().restaurants();
 
-
         // we use a smaller period than 2 years as the result gets huge
-        var startDate = LocalDate.of(2023, 1, 1);
+        var startDate = START_DATE;
+
+        if (args.length == 1) {
+            startDate = LocalDate.parse(args[0]);
+        }
 
         // needed to create mock data
         MockNeat mock = MockNeat.threadLocal();
@@ -72,21 +90,31 @@ public class IlpOrdersSampleDataGenerator {
         // where our result will be returned
         List<Order> orderList = new ArrayList<>();
 
+        var endDate = startDate.plusDays(DURATION_IN_MONTHS * 30);
+
         // iterate over each date in the range
         var currentDate = startDate;
-        while (currentDate.isBefore(LocalDate.of(2023, 5, 31))) {
-
+        while (currentDate.isBefore(endDate)) {
 
             // traverse over all possible order outcomes to generate one record for each outcome possible
             for (var outcome : OrderStatus.values()) {
 
-                // create a valid order with default values
-                var order = CreateSampleOrder(currentDate, outcome, InvalidOrderReasonCode.NO_ERROR, mock, restaurants);
-
                 // now modify the wrong entries according to the enum
                 switch (outcome) {
+
                     case INVALID -> {
+
+                        // now create all permutations of orders for INVALID
                         for (var reasonCode : InvalidOrderReasonCode.values()) {
+
+                            // create a valid order with default values
+                            var order = CreateSampleOrder(currentDate, outcome, reasonCode, mock, restaurants);
+
+                            // we want to ignore NO-ERRORs as these are already handled
+                            if (reasonCode == InvalidOrderReasonCode.NO_ERROR){
+                                continue;
+                            }
+
                             switch (reasonCode) {
                                 case CVV -> {
                                     var len = Integer.toString(ThreadLocalRandom.current().nextInt(1, 8));
@@ -172,9 +200,13 @@ public class IlpOrdersSampleDataGenerator {
                                 }
 
                                 default -> {
-                                    // Uups...
+                                    // this would be an error
+                                    throw new RuntimeException("Reasoncode: " + reasonCode + " was not handled");
                                 }
                             }
+
+                            // set the individual reason code for this order and add the order
+                            orderList.add(order);
                         }
                     }
 
@@ -190,11 +222,9 @@ public class IlpOrdersSampleDataGenerator {
                     }
                 */
                     default -> {
-                        continue;
+                        ;
                     }
                 }
-
-                orderList.add(order);
             }
 
             // find another date
@@ -202,8 +232,8 @@ public class IlpOrdersSampleDataGenerator {
         }
 
         currentDate = startDate;
-        while (currentDate.isBefore(LocalDate.of(2023, 5, 31))) {
-            for (int orderCount = 0; orderCount < 30; orderCount ++){
+        while (currentDate.isBefore(endDate)) {
+            for (int orderCount = 0; orderCount < MAX_VALID_ORDERS_PER_DAY; orderCount ++){
                 // create a valid order with default values
                 orderList.add(CreateSampleOrder(currentDate, OrderStatus.DELIVERED, InvalidOrderReasonCode.NO_ERROR, mock, restaurants));
             }
