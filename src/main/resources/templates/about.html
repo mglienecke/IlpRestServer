@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
+    <link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:href = "@{/js/bootstrap.bundle.min.css}"></script>
+    <title>ILP - File-Submission-Analyzer</title>
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div>
+    <p>
+        The ILP File Submission Analyzer was written to provide students the ability to test their submissions before they
+        are getting marked and evaluated.
+    </p>
+
+    <p>
+        The analyzer just checks for correctness or not, but doesn't give additional hints about the cause of an error
+    </p>
+
+</div>
+
+<div  th:replace="~{fragments/footer :: footer}"></div>
+</body>
+
+</html>
