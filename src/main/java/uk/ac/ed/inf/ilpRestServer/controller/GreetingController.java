@@ -1,16 +1,31 @@
 package uk.ac.ed.inf.ilpRestServer.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import uk.ac.ed.inf.ilpRestServer.formSubmission.Greeting;
 
 @Controller
 public class GreetingController {
 
-    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
-    public String get(ModelMap model) {
-        model.addAttribute("message", "Hello, World!");
+    @GetMapping("/greetingTest")
+    public String greetingForm(Model model) {
+        model.addAttribute("greeting", new Greeting());
         return "greeting";
     }
+
+    @RequestMapping(value = "/greetingDirect", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String greetingDirect() {
+        return "<html>\n" + "<header><title>Welcome</title></header>\n" +
+                "<body>\n" + "Hello world\n" + "</body>\n" + "</html>";
+    }
+
+    @PostMapping("/greeting")
+    public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
+        model.addAttribute("greeting", greeting);
+        return "result";
+    }
+
 }

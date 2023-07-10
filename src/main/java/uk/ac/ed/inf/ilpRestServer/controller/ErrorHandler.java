@@ -5,10 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import static jakarta.servlet.RequestDispatcher.FORWARD_REQUEST_URI;
 
 /**
  * handle global errors with a project specific better message
@@ -26,7 +27,7 @@ public class ErrorHandler implements ErrorController {
     @RequestMapping("/error")
     @ResponseBody
     public String handleError(HttpServletRequest request) {
-        String errorUrl = (String) request.getAttribute(RequestDispatcher.FORWARD_REQUEST_URI);
+        String errorUrl = (String) request.getAttribute(FORWARD_REQUEST_URI);
         Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
         Exception exception = (Exception) request.getAttribute("javax.servlet.error.exception");
         return String.format("<html><body><h1>ILP-REST-Server - Error Page</h1><div>Status code: <b>%s</b></div>"
